@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import Http404
 from django.http import HttpResponse
 from django.template import loader
@@ -13,10 +13,7 @@ def index(request):
     return render(request, 'ankiety/index.html', context)
 
 def detail(request, question_id):
-    try:
-        question = Question.objects.get(pk=question_id)
-    except Question.DoesNotExist:
-        raise Http404("Pytanie nie istnieje")
+    question = get_object_or_404(Question, pk=question_id)
     return render(request, 'ankiety/detail.html', {'question': question})
 
 def results(request, question_id):
