@@ -3,23 +3,24 @@ from django.http import Http404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
+from django.views import generic
 
 from .models import Question, Choice
 
-def index(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {
-        'latest_question_list': latest_question_list,
-    }
-    return render(request, 'ankiety/index.html', context)
+class IndexView(generic.ListView):
+    template_name = 'ankiety/index.html'
+    context_object_name = 'latest_question_list'
+    def get_queryset(self):
+        """Zwroc piec ostatnich opublikowanych ankiet."""
+        return Question.objects.order_by('-pub_date')[:5]
 
-def detail(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'ankiety/detail.html', {'question': question})
+class DetailView(generic.DetailView):
+    model = Question
+    template_name = 'ankiety/detail.html'
 
-def results(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'ankiety/results.html', {'question': question})
+class ResultsView(generic.DetailView):
+    model = Question
+    template_name = 'ankiety/results.html'
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
