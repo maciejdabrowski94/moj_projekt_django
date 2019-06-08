@@ -25,13 +25,17 @@ SECRET_KEY = 'v20_b2no)ynjwihehr-mu3o5d*3!v*^z!pc5_b%s3-s!&f%l)x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['maciejdabrowski.pythonanywhere.com']
+ALLOWED_HOSTS = [
+    'maciejdabrowski.pythonanywhere.com',
+    '127.0.0.1'
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'ankiety.apps.AnkietyConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -119,3 +126,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = '/home/maciejdabrowski/moj_projekt_django/mysite/static'

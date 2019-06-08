@@ -2,5 +2,24 @@ li a {
     color: green;
 }
 body {
-    background: white url("images/background.gif") no-repeat;
+    background-color: lightblue;
+}
+
+.box {
+  background-color: deepskyblue;
+  border-radius:50px;
+  -moz-border-radius:50px;
+  -webkit-border-radius:50px;
+}
+.demoFont {
+  font-family: Georgia, serif;
+  font-size: 50px;
+  letter-spacing: 2.6px;
+  word-spacing: 2.8px;
+  color: #140170;
+  font-weight: 700;
+  text-decoration: none solid rgb(68, 68, 68);
+  font-style: normal;
+  font-variant: small-caps;
+  text-transform: none;
 }

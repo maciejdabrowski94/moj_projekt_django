@@ -5,6 +5,7 @@ from django.template import loader
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from django.shortcuts import redirect
 
 from .models import Question, Choice
 
